@@ -1,2 +1,2 @@
 # Django
-Django+MySQL实习小型医院管理系统
+Django+MySQL小型医院管理系统
