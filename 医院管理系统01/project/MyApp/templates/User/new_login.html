@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>欢迎来到登录界面</title>
+    <link rel="stylesheet"href="../../static/css/bootstrap.min.css">
+      <style type="text/css">
+ body {
+            background-color: mediumorchid;
+            background: url("../../static/img/small.jpg")no-repeat center center fixed;
+            background-size: 100%;
+        }
+ h3{
+     font-family: "Roboto", "Lucida Grande", Verdana, Arial, sans-serif;
+     font-size: 60px;
+     color:dodgerblue;
+     text-align: center;
+     margin-top: 80px;
+ }
+      div{
+          background-color:lightskyblue;
+          margin-top: 90px;
+          margin-left: 560px;
+          width:400px;
+          height: 300px;
+          border-radius: 20px;
+      }
+      .kuang1{
+          width: 200px;
+          height: 27px;
+          border-radius: 8px;
+          color:midnightblue;
+          margin:50px 10px  50px 50px;
+      }
+    .kuang2 {
+        width: 200px;
+        height: 27px;
+         border-radius: 8px;
+        color:midnightblue;
+        margin:10px 50px 50px 50px;
+        }
+        .sub1{
+            font-family:'Source Sans Pro', sans-serif;
+            width: 120px;
+            height: 40px;
+            border-radius: 10px;
+            margin-left: 40px;
+        }
+          .sub2{
+            font-family:'Source Sans Pro', sans-serif;
+            width: 80px;
+            height: 30px;
+            border-radius: 10px;
+            margin-left: 40px;
+              margin-top: 15px;
+            float: right;
+        }
+    </style>
+</head>
+<body>
+{% if status == 1 %}
+    <p style="position: absolute;
+    top: 200px;
+    left: 747px;
+    font-size: 20px;
+    color: red;"> {{ info }} </p>
+{% elif status == 2 %}
+    <p style="position: absolute;
+    top: 200px;
+    left: 747px;
+    font-size: 20px;
+    color: red;"> {{ info }} </p>
+{% elif status == 3 %}
+    <p style="position: absolute;
+    top: 200px;
+    left: 747px;
+    font-size: 20px;
+    color: red;"> {{ info }} </p>
+{% endif %}
+<h3>欢&nbsp;&nbsp;迎&nbsp;&nbsp;登&nbsp;&nbsp;录&nbsp;&nbsp;医&nbsp;&nbsp;院&nbsp;&nbsp;管&nbsp;&nbsp;理&nbsp;&nbsp;平&nbsp;&nbsp;台</h3>
+    <div class="1">
+    <form action="">
+        {% csrf_token %}
+        <input type="text" class="kuang1" placeholder="Username" name="user_name" ><br>
+        <input type="password" class="kuang2" placeholder="Password" name="password"><br>
+        <input type="submit" class="sub1 btn btn-success" value="Manager_login" formmethod="post" formaction="/new_login/">
+        <input type="submit" class="sub1 btn btn-success" value="Doctor_login" formmethod="post" formaction="/doctor_login/">
+        &nbsp &nbsp &nbsp &nbsp
+        <input type="submit" value="regist" class="sub2 btn btn-success" formmethod="get" formaction="/doctor_regist/">
+    </form>
+    </div>
+</body>
+</html>

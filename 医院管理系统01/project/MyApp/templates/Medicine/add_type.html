@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>添加新药品</title>
+    <link rel="stylesheet"href="../../static/css/bootstrap.min.css">
+    <style>
+             h2{
+            padding-left: 60%;
+             margin-top: 4%;
+        }
+        input{
+            width: 120px;
+            font-size: 22px;
+            border-radius: 5px;
+        }
+          body{
+            background: url("../../static/img/1234.png") no-repeat center center fixed;
+            background-size: 100%;
+              font-size: 28px;
+        }
+         .bg{
+            width:500px;
+            height:300px;
+            margin-top: 5%;
+             margin-left: 50%;
+            background-color: rgba(142 ,229 ,238,0.5);
+        }
+        .btn input{ /*设置两个按钮的宽高、边距及边框样式*/
+             width: 130px;
+             height: 50px;
+             background: #87CEFF;
+             border-radius: 20px;
+            font-size: 18px;
+         }
+         .btn{
+            margin-left:83%;
+        }
+        .b1,.b2{
+            margin-left: 15% ;
+            padding-top:10%;
+        }
+    </style>
+</head>
+<body>
+<h2>添加药品</h2>
+<form >
+    <div class="bg">
+        {% csrf_token %}
+        <div class="b1">请输入药品名称:<input type="text"name="m_name"></div><br>
+        <div class="b2">请输入添加数量:<input type="text"name="m_num"></div>
+        </div>
+    <div class="btn">
+        <p class="btn1 "><input type="submit"value="确认添加"class="btn-default" formaction="/add_medicine_type/"formmethod="get"onclick="alert('添加成功')"></p>
+        <p class="btn1 "><input type="submit"value="返回上一级"class="btn-default" formaction="/medicine/"formmethod="get"></p>
+    </div>
+</form>
+</body>
+</html>

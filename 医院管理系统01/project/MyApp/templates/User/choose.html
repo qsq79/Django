@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>欢迎进入管理员界面</title>
+    <link rel="stylesheet"href="../../static/css/bootstrap.min.css">
+</head>
+<style>
+    body{
+        background: url("../../static/img/download1.jpg")no-repeat center center fixed;
+        background-size: 100%;
+    }
+    #one{
+        height: 450px;
+        width: 200px;
+        text-align: center;
+        font-size: 19px;
+        {#line-height: 20px;#}
+        background: #FF9;
+        border: 1px ;
+        padding: 0px 10px;
+        padding-top: 18px;
+        margin-top: 50px;
+        margin-left: 600px;
+        border-radius: 30px;
+    }
+    #four{
+        height:1000px;
+        width: 400px;
+        float: right;
+        text-align: center;
+        margin-top: -130px;
+        margin-right: 150px;
+    }
+    .two{
+        height: 50px;
+        width: 120px;
+        font-size: 16px;
+        margin-right: 100px;
+        margin-top: 35px;
+        border-radius: 20px;
+        background-color:royalblue;
+    }
+    .three{
+        height: 75px ;
+        width: 200px;
+        font-size: 23px;
+        border-radius: 20px;
+        background-color:deepskyblue;
+    }
+    h2{
+        font-size: 28px;
+    }
+    p{
+        font-size: 20px;
+    }
+    .f{
+        margin-top: 200px;
+        margin-left: 350px;
+    }
+</style>
+<body>
+{#<div id="bg">#}
+    <div id="four">
+        <h2>欢迎进入管理员界面</h2></br>
+        <p>
+            请选择您要进行的操作
+        </p>
+    </div>
+
+        <form action=""class="f">
+                    {% csrf_token %}
+            <input type="submit" class="three btn-info" value="挂号" formmethod="post"formaction="/guahao/">
+            <br><br>
+            <input type="submit" class="three btn-info" value="查询病人" formmethod="get"formaction="/search_p/">
+            <br><br>
+            <input type="submit" class="three btn-info" value="查询医生" formmethod="get"formaction="/search_d/">
+            <br><br>
+            <input type="submit" class="three btn-info" value="药品管理" formmethod="get"formaction="/medicine/">
+        </form>
+    <form action="/new_login/">
+            <input type="submit" class="two btn-info" value="退出">
+    </form>
+{#</div>#}
+</body>
+</html>

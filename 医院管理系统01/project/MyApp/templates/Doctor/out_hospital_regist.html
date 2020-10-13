@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>出院登记</title>
+    <link rel="stylesheet"href="../../static/css/bootstrap.min.css">
+    <style>
+        body{
+            background: url("../../static/img/out3.png");
+            background-size: 100%;
+        }
+        h2{
+        text-align: center
+        }
+        .d1{
+            width: 100px;
+            height: 40px;
+            background-color: #8EE5EE;
+            border-radius: 5px;
+            margin-top: 18px;
+        }
+        .d2{
+            width: 100px;
+            height: 35px;
+            background-color: #8EE5EE;
+            border-radius: 5px;
+            margin-top: 18px;
+        }
+        .btn{
+            width: 60px;
+            height: 40px;
+            background-color: #8EE5EE;
+            border-radius: 5px;
+        }
+        .btn1{
+            width: 100px;
+            height: 40px;
+            background-color: #8EE5EE;
+            border-radius: 5px;
+            margin-left: 40px;
+            margin-bottom: 120px;
+        }
+        div{
+            width: 540px;
+            height: 540px;
+            margin-top: 30px;
+            margin-left: 880px;
+            font-family: "Roboto", "Lucida Grande", Verdana, Arial, sans-serif;
+            font-size: 18px;
+            background-color: rgba(3,4,5,0.1)
+        }
+        .t{
+            margin-left: 30px;
+            margin-top: 40px;
+        }
+        table{
+            margin-left:130px;
+            margin-top: 70px;
+        }
+        table th{
+            background-color:rgba(7,4,5,0.2);
+            border-width: 1px;
+            padding: 8px;
+            border-style: solid;
+            border-color: #999999;
+            color: white;
+        }
+        table td{
+            background-color: rgba(0,0,0,0.2);
+            border-width: 1px;
+            padding: 8px;
+            border-style: solid;
+            border-color: #999999;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+<h2>出院登记</h2>
+<div>
+    <form class="t">
+    {% csrf_token %}
+       请选择科室名称:
+        <select name="patient_dept" class="d1">
+                {% for dept in depts %}
+                    <option value="{{dept.id}}">{{dept.dept_name}}</option>
+                {% endfor %}
+        </select>
+        <input type="submit"value="查询"formaction="/search_room/"formmethod="post" class="btn btn-default">
+    </form>
+<table >
+             <tr>
+                 <th>房&nbsp&nbsp&nbsp&nbsp&nbsp号</th>
+                 <th>病&nbsp房&nbsp状&nbsp况</th>
+                            <td></td>
+             </tr>
+            {% for dept_room_info in dept_room_infos %}        <!--循环user_results中的数据输出 -->
+                <tr>
+                    <td>{{dept_room_info.room_id}}</td>
+                    <td>{{dept_room_info.room_patient_name}}</td>
+                    <td></td>
+                </tr>
+            {% endfor %}
+</table>
+<form class="t">
+    {% csrf_token %}
+    请输入需要出院的病人的房号:<input type="text"name="out_id" class="d2">
+    <input type="submit"value="确认"formaction="/out_hospital/"formmethod="post" class="btn btn-default">
+    </form>
+</div>
+<form>
+{% csrf_token %}
+<input type="submit"value="返回上一级"formaction="/return4/"formmethod="get" class="btn1 btn-default">
+</form>
+</body>
+</html>

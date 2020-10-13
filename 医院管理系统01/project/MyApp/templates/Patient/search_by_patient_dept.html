@@ -1,0 +1,121 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>病人信息</title>
+    <link rel="stylesheet"href="../../static/css/bootstrap.min.css">
+   <style>
+        body{
+            background: url("../../static/img/display.png") no-repeat center center fixed;
+            background-size: 100%;
+        }
+        div{
+            width: 900px;
+            height: 400px;
+            {#background-color:rgba(7,4,5,0.1);#}
+            margin-left: 280px;
+            margin-top: 20px;
+             border-radius: 10px;
+        }
+         .f{
+            width:400px;
+            height:150px;
+            margin-top: 80px;
+            margin-left: 150px;
+        }
+        span{
+            width:100px;
+            height: 20px;
+            display:inline-block;      /*将行内元素转换为行内块元素*/
+            }
+        table{
+            border-radius: 5px;
+            text-align: center;
+            margin-top: 60px;
+            margin-left: 150px;
+            width: 10px;
+        }
+         table th{
+            background-color: cornflowerblue;
+            border-width: 1px;
+            padding: 3px;
+            border-style: solid;
+            border-color: #999999;
+            color:black;
+            width: 1px;
+            text-align: center;
+        }
+        table td{
+            background-color: #F5FAFA;
+            border-width: 1px;
+            padding: 3px;
+            border-style: solid;
+            border-color: #999999;
+            color:black;
+            width: 1px;
+            text-align: center;
+        }
+        .a1{
+             width: 120px;
+             height: 40px;
+             margin-left: 60px;
+            margin-top: 70px;
+             background-color: cornflowerblue;
+             border-radius: 10px;
+            font-family: "Adobe 宋体 Std L";
+            font-size: 16px;
+        }
+         .a2{
+
+             width: 120px;
+             height: 40px;
+             left: 900px;
+             top: 470px;
+              background-color: cornflowerblue;
+             border-radius: 10px;
+            font-family: "Adobe 宋体 Std L";
+            font-size: 16px;
+        }
+    h2{
+        text-align: center;
+        margin-top: 80px;
+        font-family: "Agency FB";
+        font-size: 28px;
+    }
+    </style>
+</head>
+<body>
+<h2>科&nbsp室&nbsp病&nbsp人&nbsp信&nbsp息</h2>
+    <div>
+        <table>
+            <tr>
+                    <th><span>门诊&nbsp&nbsp号</span></th>
+                    <th><span>姓&nbsp&nbsp&nbsp名</span></th>
+                    <th><span>性&nbsp&nbsp&nbsp别</span></th>
+                    <th><span>年&nbsp&nbsp&nbsp龄</span></th>
+                    <th><span>电&nbsp&nbsp&nbsp话</span></th>
+                    <th><span>科&nbsp&nbsp&nbsp室</span></th>
+                   <!--定义表头单元格应该横跨的列数-->
+                </tr>
+            {% for patient_info in patient_infos %}
+                <tr><!--循环user_results中的数据输出 -->
+                    <td><span>{{ patient_info.id }}</td>
+                    <td><span>{{ patient_info.patient_name }}</span></td>
+                    <td><span>{{ patient_info.patient_sex }}</span></td>
+                    <td><span>{{ patient_info.patient_age }}</span></td>
+                    <td><span>{{ patient_info.patient_telep }}</span></td>
+                    <td><span>{{ patient_info.patient_dept.dept_name}}</span></td>
+                   <!--定义表头单元格应该横跨的列数-->
+                </tr>
+            {% endfor %}
+            </table>
+<form method="post" class="f">
+    {% csrf_token %}
+    <input type="submit" class="a2 btn-info" value="继续查找" formaction="/search_p/" formmethod="post">
+    <input type="submit" class="a1 btn-info" value="返回首页" formaction="/choose/" formmethod="post"style="    position: relative;
+    left: 320px;">
+</form>
+    </div>
+</body>
+<html>

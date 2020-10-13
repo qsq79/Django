@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>医生信息</title>
+    <link rel="stylesheet"href="../../static/css/bootstrap.min.css">
+    <style type="text/css">
+        body{
+            background: url("../../static/img/display.png") no-repeat center center fixed;
+            background-size: 100%;
+        }
+        div{
+            width: 900px;
+            height: 400px;
+            {#background-color:rgba(7,4,5,0.1);#}
+            margin-left: 310px;
+            margin-top: 10px;
+             border-radius: 10px;
+        }
+         .f{
+            width:780px;
+            height:150px;
+             margin-top: 80px;
+            margin-left: 70px;
+        }
+        span{
+            width:100px;
+            display:inline-block;      /*将行内元素转换为行内块元素*/
+            }
+        table{
+            border-radius: 5px;
+            text-align: center;
+            margin-top: 50px;
+            margin-left: 70px;
+        }
+         table th{
+            background-color: cornflowerblue;
+            border-width: 1px;
+            padding: 3px;
+            border-style: solid;
+            border-color: #999999;
+             color:black;
+             width: 2px;
+             text-align: center;
+        }
+        table td{
+            {#background-color: rgba(0,0,0,0.5);#}
+            background-color:cornflowerblue;
+            border-width: 1px;
+            padding: 3px;
+            border-style: solid;
+            border-color: #999999;
+            color:black;
+            width: 2px;
+            text-align: center;
+        }
+        .a1{
+             width: 120px;
+             height: 40px;
+             float: right;
+            margin-top: 60px;
+             background-color: cornflowerblue;
+             border-radius: 10px;
+            font-family: "Adobe 宋体 Std L";
+            font-size: 16px;
+        }
+         .a2 {
+             width: 120px;
+             height: 40px;
+             float: left;
+             margin-top: 60px;
+             background-color: cornflowerblue;
+             border-radius: 10px;
+             font-family: "Adobe 宋体 Std L";
+             font-size: 16px;
+         }
+          h2{
+        text-align: center;
+        margin-top: 80px;
+        font-family: "Agency FB";
+        font-size: 28px;
+    }
+    </style>
+</head>
+<body>
+ <h2>医&nbsp生&nbsp信&nbsp息&nbsp表</h2>
+ <div>
+    <table>
+    <tr>
+        {% for result_key in result_keys %}
+                <td><span>{{ result_key }}</span></td>
+        {% endfor %}
+    </tr>
+        <tr>
+        {% for result_value in result_values %}
+                <td><span>{{ result_value }}</span></td>
+        {% endfor %}
+        </tr>
+    </table>
+ <form class="f">
+     {% csrf_token %}
+     <input type="submit" class="a1 btn-info" value="修改医生信息"  formaction="/alter/" formmethod="get">
+     <input type="submit" class="a2 btn-info"  value="返回上一级" formaction="/search_d/">
+     <input type="submit" class="a1 btn-info" value="查看工作时间"  formaction="/work2/" formmethod="get">
+ </form>
+ </div>
+</body>
+</html>

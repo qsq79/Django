@@ -1,0 +1,105 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>病人信息</title>
+    <link rel="stylesheet"href="../../static/css/bootstrap.min.css">
+    <style>
+        body{
+            background: url("../../static/img/display.png") no-repeat center center fixed;
+            background-size: 100%;
+        }
+        div{
+            width: 900px;
+            height: 400px;
+            {#background-color:rgba(7,4,5,0);#}
+            margin-left: 280px;
+            margin-top: 10px;
+            border-radius: 10px;
+        }
+         .f{
+            width:700px;
+            height:150px;
+             margin-top: 130px;
+            margin-left: 100px;
+        }
+        span{
+            width:100px;
+            display:inline-block;      /*将行内元素转换为行内块元素*/
+            }
+        table{
+            border-radius: 5px;
+            text-align: center;
+            margin-top: 50px;
+            margin-left: 140px;
+        }
+         table th{
+             background-color: #F5FAFA;
+            border-width: 1px;
+            padding: 3px;
+            border-style: solid;
+            border-color: #63B8FF;
+             color:black;
+        }
+        table td{
+            {#background-color: rgba(0,0,0,0.5);#}
+            background-color: cornflowerblue;
+            border-width: 1px;
+            padding: 3px;
+            border-style: solid;
+            border-color: #999999;
+            color:black;
+        }
+        .a1{
+             width: 120px;
+             height: 40px;
+             {#margin-left:40px;#}
+            float: right;
+             background-color: cornflowerblue;
+             border-radius: 10px;
+            font-family: "Adobe 宋体 Std L";
+            font-size: 16px;
+        }
+         .a2{
+             width: 120px;
+             height: 40px;
+             margin-left: 40px;
+             margin-top: 20px;
+              background-color: cornflowerblue;
+             border-radius: 10px;
+            font-family: "Adobe 宋体 Std L";
+            font-size: 16px;
+        }
+    h2{
+        text-align: center;
+        margin-top: 80px;
+        font-family: "Agency FB";
+        font-size: 28px;
+    }
+    </style>
+</head>
+<body>
+ <h2>病&nbsp人&nbsp信&nbsp息</h2></br>
+<div>
+    {% csrf_token %}
+    <table>
+    <tr>
+
+        {% for result_key in result_keys %}
+                <td><span>{{ result_key }}</span></td>
+        {% endfor %}
+    </tr>
+        <tr>
+        {% for result_value in result_values %}
+                <td><span>{{ result_value }}</span></td>
+        {% endfor %}
+        </tr>
+    </table>
+  <form class="f">
+      <input type="submit"value="返回上一级" class="a2 btn-info" formaction="/search_p/">
+      <input type="submit" value="查看就诊详情" class="a1 btn-info" formaction="/diagnosis_detail/" formmethod="get">
+  </form>
+</div>
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .b{
+            width: 600px;
+            height: 800px;
+            background: red;
+            position: absolute;
+            left: 0;
+        }
+        .c{
+            width: 600px;
+            height:800px;
+            background: blue;
+            float: right;
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="b">
+    <table border="2">
+                <tr>
+                    <th>编&nbsp&nbsp&nbsp号</th>
+                    <th align="center">姓&nbsp&nbsp&nbsp名</th>
+                    <th>性&nbsp&nbsp&nbsp别</th>
+                    <th>年&nbsp&nbsp&nbsp龄</th>
+                    <th>电&nbsp&nbsp&nbsp话</th>
+                    <th>职&nbsp&nbsp&nbsp位</th>
+                    <th>科&nbsp&nbsp&nbsp室</th>
+                    <td colspan="6"></td><!--定义表头单元格应该横跨的列数-->
+                </tr>
+                <tr>
+                {% for Doctor_result in Doctor_results %}
+                <tr><!--循环user_results中的数据输出 -->
+                    <td>{{ Doctor_result.doctor_id }}</td>
+                    <td>{{ Doctor_result.doctor_name }}</td>
+                    <td>{{Doctor_result.doctor_sex}}</td>
+                    <td>{{Doctor_result.doctor_age}}</td>
+                    <td>{{Doctor_result.doctor_telep}}</td>
+                    <td>{{Doctor_result.doctor_position}}</td>
+                    <td>{{Doctor_result.doctor_dept.dept_name}}</td>
+                </tr>
+                {% endfor %}
+            </table>
+<form action="/display/"method="post">
+      {% csrf_token %}
+    <input type="text"name="test">
+    <input type="submit"value="继续显示">
+</form>
+</div>
+{% if  status == 2 %}
+    <p>
+    <div class="c">
+        <table border="2">
+            <tr>
+                    <th>姓&nbsp&nbsp&nbsp名</th>
+                    <th>科&nbsp&nbsp&nbsp长</th>
+                    <th>电&nbsp&nbsp&nbsp话</th>
+                    <th>楼&nbsp&nbsp&nbsp层</th>
+                    <td colspan="6"></td><!--定义表头单元格应该横跨的列数-->
+                </tr>
+                <tr>
+                {% for Dept_result in Dept_results %}
+                <tr><!--循环user_results中的数据输出 -->
+                    <td>{{ Dept_result.dept_name }}</td>
+                    <td>{{Dept_result.dept_manager}}</td>
+                    <td>{{Doctor_result.dept_manager_telep}}</td>
+                    <td>{{Doctor_result.dept_floor}}</td>
+                </tr>
+                {% endfor %}
+            </table>
+    </div>
+    </p>
+{% endif %}
+
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>挂号单</title>
+        <link rel="stylesheet"href="../../static/css/bootstrap.min.css">
+
+</head>
+<style type="text/css">
+    body{
+        background:url("../../static/img/_500703205.jpg")no-repeat center center fixed;
+            background-size:100%;
+    }
+    .div1{
+        height:460px;
+        width: 350px;
+        margin-left: 900px;
+        {#margin-right: 20px;#}
+        margin-top: 100px;
+        margin-bottom:100px ;
+        background-color: gainsboro;
+        opacity:0.7;
+        filter:alpha(opacity=70);
+        padding-top: 10px;
+        padding-left: 60px;
+        border-radius: 30px;
+    }
+
+    .input1{
+        width:200px;
+        height: 30px;
+        border-style:solid;
+        border-top: 0px;
+        border-left: 0px;
+        border-right: 0px;
+        background-color: gainsboro;
+        opacity:0.7;
+        filter:alpha(opacity=70);
+    }
+    .input02{
+        border-radius: 30px;
+        height: 30px;
+        width: 80px;
+        border-color: black;
+        margin-left: 200px;
+    }
+    .select01{
+         border-radius: 30px;
+        border-color: dimgray;
+        height: 28px;
+        width: 110px;
+        border-width:2px;
+    }
+    h2{
+        margin-left: 80px;
+    }
+</style>
+<body>
+<div class="div1">
+    <form>
+                {% csrf_token %}
+<h2>挂号单</h2>
+    姓&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名:<input class="input1" name="patient_name"><br><br>
+
+    年&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;龄:<input class="input1" name="patient_age"><br><br>
+
+        身份证号:<input class="input1"name="patient_idcard"><br><br>
+
+   联系电话:<input class="input1"name="patient_telep"><br><br>
+    性&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;别:
+          <select class="select01"name="patient_sex" >
+                <option >女</option>
+                <option >男</option>
+        </select><br><br>
+    科&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;室:
+        <select class="select01"name="patient_dept" >
+            {% for dept in depts %}
+                <option value="{{dept.id}}">{{dept.dept_name}}</option>
+            {% endfor %}
+        </select><br><br>
+ <input class="input02 " type="submit"  value="打印挂号单"onclick="alert('打印成功！')"formaction="/add_patient/"formmethod="post">
+<input class="input02" type="submit"  value="返回上一级"formaction="/add_patient/"formmethod="get">
+
+    </form>
+</div>
+</body>
+</html>
